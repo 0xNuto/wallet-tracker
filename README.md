@@ -49,9 +49,9 @@ The browser writes trades and checkpoints in one IndexedDB transaction. Existing
 
 Deploy `index.js` as a Cloudflare Worker module. Add `BIRDEYE_API_KEY` as a **runtime secret** in Cloudflare; never commit the value to GitHub or put it in browser code.
 
-For Git-based deployment, connect the existing Worker to this repository and its production branch. The repository needs a Wrangler configuration containing the exact existing Worker name, `main: "index.js"`, and the existing compatibility date. Preserve any existing resource bindings and routes when migrating configuration. The normal deploy command is `npx wrangler deploy`; this single-file application needs no separate frontend build step.
+For Git-based deployment, connect the existing Worker to this repository and its production branch. The included `wrangler.jsonc` targets `winter-poetry-8d26solana-wallet-finder`, uses `index.js` as its entry point and compatibility date `2026-11-23`, and preserves dashboard variables with `keep_vars: true`. Preserve any existing resource bindings and routes when migrating configuration. The normal deploy command is `npx wrangler deploy`; this single-file application needs no separate frontend build step.
 
-This repository does not currently contain a verified Wrangler configuration. A successful GitHub commit alone does not prove a successful Cloudflare deployment; check Cloudflare's deployment history and the live application.
+The Worker name and compatibility date were supplied by the project owner. A successful GitHub commit alone does not prove a successful Cloudflare deployment; check Cloudflare's deployment history and the live application.
 
 ## Testing
 
