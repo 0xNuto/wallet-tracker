@@ -73,3 +73,7 @@ Tests cover aggregate thresholds, all/N-of-M matching, time boundaries, invalid 
 - Candidate-first wallet lookups and independent buyer verification are not implemented. They require verified provider support and additional data retrieval.
 - Request pacing is per browser scan, not a global quota. Public multi-user use needs server-side abuse controls and coordinated provider-rate limits.
 - Birdeye credentials, plan access and historical coverage determine available data. Do not expose API keys in the repository.
+
+## Troubleshooting stale builds
+
+If Cloudflare reports that `wrangler.jsonc` is missing, check the build's commit SHA. Commit `af62365` predates that file; retrying that revision will not pick up newer commits. Select a new build from the latest `main` revision. To diagnose the checkout, temporarily use `git rev-parse HEAD && git ls-tree --name-only HEAD` as the build command. The list must contain `wrangler.jsonc`. If new pushes do not appear in Cloudflare, inspect the GitHub integration and its repository access.
